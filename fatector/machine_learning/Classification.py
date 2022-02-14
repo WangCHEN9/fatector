@@ -9,11 +9,19 @@ from fatector.help_functions import get_config
 
 
 class Classification:
+    """this class runs automl thanks to pycaret"""
+
     def __init__(
         self,
         df: pd.DataFrame,
         df_test: pd.DataFrame = None,
     ):
+        """init function
+
+        Args:
+            df (pd.DataFrame): df_train
+            df_test (pd.DataFrame, optional): if None, df_test will be split from df_train. Defaults to None.
+        """
         self.cfg = get_config()
         self.normalize = self.cfg.ml.normalize
         self.model_path = Path(self.cfg.ml.model_path)
@@ -26,6 +34,7 @@ class Classification:
         self.model_path.mkdir(exist_ok=True, parents=True)
 
     def run_pycaret_experiment(self):
+        """set up pycaret experiment and run automl"""
         logger.info(f"running experiment for x = {self.df.columns}, y = {self.y}...")
         self._set_exp()
         top3 = pyclf.compare_models(turbo=False, n_select=3, sort=self.optimize)
@@ -38,6 +47,7 @@ class Classification:
         self._get_config_from_exp()
 
     def _set_exp(self):
+        """set up pycaret experiment"""
         experiment = pyclf.setup(
             self.df,
             target=self.y,
@@ -51,7 +61,7 @@ class Classification:
             silent=True,
             verbose=False,
             log_experiment=True,
-            experiment_name=f"Clf-{self.optimize}-Norm-{self.normalize}-Y={self.y}-X=({len(self.df.columns)},{len(self.df)})",
+            experiment_name=f"Clf-{self.optimize}-Norm-{self.normalize}-Y={self.y}-X=({len(self.df.columns) -1},{len(self.df)})",
             log_plots=["error", "confusion_matrix", "auc", "parameter"],
             log_profile=False,
             log_data=False,
@@ -61,6 +71,7 @@ class Classification:
         )
 
     def _get_config_from_exp(self):
+        """get config from experiment"""
         self.X = pyclf.get_config("X")
         self.y = pyclf.get_config("y")
         self.X_train = pyclf.get_config("X_train")
@@ -69,18 +80,21 @@ class Classification:
         self.y_test = pyclf.get_config("y_test")
 
     def save_model(self):
+        """save model to local disk"""
         save_file_path = self.model_path / f"{self.model_name}"
         pyclf.save_model(self.best_model, save_file_path)
 
-    def load_pycaret_experiment(self):
-        self._set_exp()
-        self._get_config_from_exp()
-
     @classmethod
     def load_model(cls):
+        """load model from local disk
+
+        Returns:
+            model: loaded model
+        """
         cfg = get_config()
-        save_file_path = Path(cfg.ml.model_path) / cfg.ml.model_name
-        if save_file_path.is_file():
+        save_file_path = Path(cfg.ml.model_path) / f"{cfg.ml.model_name}"
+        logger.info(f"loading model from {save_file_path.resolve()}.pkl")
+        if Path(f"{str(save_file_path)}.pkl").is_file():
             return pyclf.load_model(save_file_path)
         else:
-            logger.error(f"can't find model from {save_file_path}")
+            logger.error(f"Can't find model from {save_file_path}.pkl")

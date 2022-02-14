@@ -6,6 +6,5 @@ loguru
 hydra-core
 pandas
 pycaret
-dalex
 openpyxl
 pandas_profiling

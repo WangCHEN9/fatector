@@ -1,7 +1,7 @@
 data:
   raw_csv_train: './data/fake_users.csv'
   raw_csv_test: './data/fake_users_test.csv'
-  processed_excel_train: './data/fake_users_test_processed.xlsx'
+  processed_excel_train: './data/fake_users_train_processed.xlsx'
   processed_excel_test: './data/fake_users_test_processed.xlsx'
   inference_result_excel: './data/fake_users_test_processed_with_prediction.xlsx'
   target: Fake
@@ -14,8 +14,7 @@ data:
     top_count_percentage: [Category]
 ml:
   model_path: './models'
-  normalize: false
+  normalize: true
   pycaret_optimize: F1
-  column_to_drop_for_ml: [UserId, Event, Category]
+  column_to_drop_for_training: [UserId, Event, Category]
   model_name: best_from_automl
-  explainer_save_path: './explainer'
