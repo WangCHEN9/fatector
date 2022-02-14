@@ -52,6 +52,16 @@ Things to check :
 - feature correlation with label
 - double check not using training data as test?
 
+### Output
+
+> outputs a .csv file with 2 columns : “UserId” and “is_fake_probability”output csv
+
+File are stored in : ./model_results/fake_users_test_with_prediction.csv
+
+> recommend a threshold to use for classification
+
+Will recommend 0.95
+
 ## Time spend
 
 we spend more than 5 hours in total until 2022-02-14 !
