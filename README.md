@@ -40,3 +40,12 @@ fatector.preprocess_train_test_data()  #! only need run once, preprocess train t
 fatector.training()  #! this will run automl based on processed data, and save all runs to ./mlruns
 fatector.inference()  #! this will run inference on processed test data
 ```
+
+## Result
+
+Somehow I have 100% accurucy ! --> bad news :-(
+
+Things to check :
+
+- feature correlation with label
+- double check not using training data as test?
