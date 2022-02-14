@@ -1,0 +1,5 @@
+data:
+  target: Fake
+  group_by: UserId
+  event: Event
+  category: Category

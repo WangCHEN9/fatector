@@ -1,5 +1,5 @@
 import pytest
-from sample.core import hi
+from fatector.core import hi
 
 
 def test_hi():

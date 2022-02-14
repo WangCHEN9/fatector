@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = "sample"
+project = "fatector"
 copyright = "2021, Wang CHEN"
 author = "Wang CHEN"
 

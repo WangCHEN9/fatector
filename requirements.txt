@@ -4,3 +4,6 @@ sphinx_rtd_theme
 black
 loguru
 hydra-core
+pandas
+pycaret
+dalex

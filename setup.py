@@ -9,9 +9,9 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = "mypackage"
-DESCRIPTION = "My short description for my project."
-URL = "https://github.com/me/myproject"
+NAME = "fatector"
+DESCRIPTION = "ML project to seperate real or bot user for marketplace."
+URL = "https://github.com/WangCHEN9/fatector"
 EMAIL = "solid.chen9@gmail.com"
 AUTHOR = "Wang CHEN"
 REQUIRES_PYTHON = ">=3.7.0"
@@ -122,5 +122,7 @@ setup(
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
     # $ setup.py publish support.
-    cmdclass={"upload": UploadCommand,},
+    cmdclass={
+        "upload": UploadCommand,
+    },
 )

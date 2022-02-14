@@ -1,7 +1,7 @@
-Welcome to sample's documentation!
+Welcome to fatector's documentation!
 ==================================
 
-.. automodule:: sample.core
+.. automodule:: fatector.core
     :members:
 
 .. toctree::
