@@ -13,13 +13,13 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("../.."))
+sys.path.insert(0, os.path.abspath("../../fatector"))
 import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
 project = "fatector"
-copyright = "2021, Wang CHEN"
+copyright = "2022, Wang CHEN"
 author = "Wang CHEN"
 
 # The full version, including alpha/beta/rc tags
@@ -40,7 +40,6 @@ templates_path = ["_templates"]
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 

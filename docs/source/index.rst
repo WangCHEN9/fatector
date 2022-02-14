@@ -1,18 +1,33 @@
 Welcome to fatector's documentation!
 ==================================
 
-.. automodule:: fatector.core
+Read me
+==================================   
+.. include:: README.rst
+
+Code dosc (TBU)
+==================================
+Fatector
+-----------------------
+.. automodule:: Fatector
     :members:
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+data_preprocess
+-----------------------
+.. automodule:: data_preprocess.DataLoader
+    :members:
+.. automodule:: data_preprocess.FeatureEngineering
+    :members:
 
+
+machine_learning
+-----------------------   
+.. automodule:: machine_learning.Classification
+    :members:
 
 
 Indices and tables
 ==================
-
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
