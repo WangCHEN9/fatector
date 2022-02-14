@@ -2,4 +2,8 @@ data:
   target: Fake
   group_by: UserId
   event: Event
-  category: Category
+  features:
+    percentage_of_event: [click_ad, send_email]
+    count_of_columns: [Event]
+    nunique_of_columns: [Category]
+    top_count_percentage: [Category]

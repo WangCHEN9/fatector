@@ -1,7 +1,7 @@
 import hydra
-from omegaconf import DictConfig, OmegaConf
+import omegaconf
 
 
-@hydra.main(config_path="./", config_name="config")
-def get_config(cfg: DictConfig) -> None:
-    return OmegaConf.to_yaml(cfg)
+def get_config():
+    cfg = omegaconf.OmegaConf.load(r"./config.yaml")
+    return cfg
