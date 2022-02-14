@@ -24,6 +24,8 @@ var/
 .installed.cfg
 *.egg
 outputs/
+mlruns/
+models/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

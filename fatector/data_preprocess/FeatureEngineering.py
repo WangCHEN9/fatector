@@ -12,6 +12,9 @@ class FeatureEngineering:
         logger.info(self.cfg)
         self._df = df
 
+        # self.other_columns_orig = df.columns.drop([self.cfg.data.target, self.cfg.data.group_by]) # keep track on this, to remove drop later on for final training data
+        # decided to do this in config file
+
     @property
     def df(self):
         return self._df
@@ -39,7 +42,7 @@ class FeatureEngineering:
         for event in self.cfg.data.features.percentage_of_event:
             df[f"{event}_percentage"] = count_dic.get(event, 0) / len(
                 df
-            )  # if event is not found, return 0
+            )  # * if event is not found, return 0
         return df
 
     def _add_new_columns(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -65,14 +68,17 @@ class FeatureEngineering:
         )  # ? a better way is to avoid this in the first place?
         return df
 
-    def add_features(self) -> pd.DataFrame:
+    def add_features(self) -> None:
         df = self._df.groupby(self.cfg.data.group_by).apply(self._add_new_columns)
         self._df = df
-        return df
 
-    def save_df_to_excel(self) -> None:
-        self._df.to_excel(self.cfg.data.training_excel_path, index=False)
-        logger.info(f"saved df to excel {self.cfg.data.training_excel_path}")
+    # def drop_not_useful_columns(self) -> None:
+    #     self._df = self._df[~self._df.columns.isin(self.other_columns_orig)]
+    ## decided to do this in config file
+
+    def save_df_to_excel(self, excel_path: Path) -> None:
+        self._df.to_excel(excel_path, index=False)
+        logger.info(f"saved df to excel {excel_path}")
 
 
 if __name__ == "__main__":
@@ -80,11 +86,10 @@ if __name__ == "__main__":
     df = DataLoader().load_from_csv(csv_file)
 
     fe = FeatureEngineering(df)
-    df = fe.add_features()
-    print(len(df))
-    fe.save_df_to_excel()
+    fe.add_features()
+    excel_path = csv_file.parent / f"{csv_file.stem}_with_added_features.xlsx"
+    fe.save_df_to_excel(excel_path)
 
-    df = pd.read_excel(
-        r"D:\03_Data_Scientist\fatector\data\training_data_with_added_features.xlsx"
-    )
+    df = pd.read_excel(excel_path)
 
+    print(df.head())
