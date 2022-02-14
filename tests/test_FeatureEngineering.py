@@ -8,6 +8,7 @@ df = pd.read_csv(cfg.data.raw_csv_test)
 
 fe = FeatureEngineering(df)
 
+
 def test_add_count_for_columns():
     df_1 = fe._add_count_for_columns(df)
     assert isinstance(df_1, pd.DataFrame)
