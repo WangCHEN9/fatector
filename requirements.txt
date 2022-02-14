@@ -7,4 +7,3 @@ hydra-core
 pandas
 pycaret
 openpyxl
-pandas_profiling

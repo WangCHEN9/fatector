@@ -18,10 +18,10 @@ REQUIRES_PYTHON = ">=3.7.0"
 VERSION = "0.1.0"
 
 # What packages are required for this module to be executed?
-REQUIRED = [
-    "pytest",
-    "sphinx",
-]
+
+with open(r"./requirements.txt") as f:
+    requirements = f.readlines()
+    REQUIRED = [x.strip() for x in requirements]
 
 # What packages are optional?
 EXTRAS = {

@@ -3,7 +3,6 @@ import pandas as pd
 from loguru import logger
 from fatector.help_functions import get_config
 from fatector.data_preprocess.DataLoader import DataLoader
-from pandas_profiling import ProfileReport
 
 
 class FeatureEngineering:
