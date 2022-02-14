@@ -7,3 +7,4 @@ data:
     count_of_columns: [Event]
     nunique_of_columns: [Category]
     top_count_percentage: [Category]
+  training_excel_path: './data/training_data_with_added_features.xlsx'

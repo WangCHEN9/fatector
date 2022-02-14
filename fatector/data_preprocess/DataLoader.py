@@ -9,7 +9,7 @@ class DataLoader:
     def __init__(self) -> None:
         pass
 
-    def load_from_csv(self, csv_file_path: Path) -> None:
+    def load_from_csv(self, csv_file_path: Path) -> pd.DataFrame:
         self._df = pd.read_csv(csv_file_path, index_col=0, header=0)
         logger.info(f"loaded df from {csv_file_path}")
         return self._df
