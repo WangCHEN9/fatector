@@ -87,6 +87,6 @@ class Fatector:
 
 if __name__ == "__main__":
     fatector = Fatector()
-    # fatector.preprocess_train_test_data()  #! only need run once
+    fatector.preprocess_train_test_data()  #! only need run once
     fatector.training()  #! this will run automl, and save all runs to /mlruns
-    fatector.inference()
+    fatector.inference()  #! this runs inference
