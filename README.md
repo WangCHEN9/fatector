@@ -64,4 +64,4 @@ Will recommend 0.95
 
 ## Time spend
 
-we spend more than 5 hours in total until 2022-02-14 !
+we spend more than 5 hours in total in 2022-02-14 !
